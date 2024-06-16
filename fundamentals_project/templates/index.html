@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           Interesting Planets 
+        </title>
+    </head>
+            <body>
+                <h3 style="font-family: Georgia, 'Times New Roman', Times, serif;">Some planets</h3>
+                <table width="300" border="1">
+                    <tr align="center">
+                        <th>name</th>
+                        <th>diameter</th>
+                        <th>fact</th>
+                    </tr>
+                    {% for planet in planetlist %}
+                    <tr align="center">
+                        <td>{{planet.name}}</td>
+                        <td>{{planet.diameter}}</td>
+                        <td>{{planet.fact}}</td>
+                        
+                    </tr>
+                    {%endfor%}
+                </table>
+            </body>
+
+</html>
