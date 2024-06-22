@@ -83,5 +83,35 @@ To create a Django app in a Django project
 
 
 
+#### Django QuerySet
+
+
+- A QuerySet is a collection of data from a database
+- It makes it easier to get the data you really need.
+
+
+##### Run  `python manage.py shell` On Cmd
+
+
+1. To import the database model use `from myapp.models import Model_name`
+
+2. To get all the objects from the database use `Model_name.objects.all()`
+
+3. To add a new object into the database use `Model_name.objects.create()`
+
+4. To get certain objects from the database use `Model_name.objects.filter()`
+
+5. To check all the queries you have made use `from django.db import connection`
+
+6. Then `print(connection.queries)` to see the queries
+
+
+
+![Orm queries](static/images/shell.py.png)
+
+
+##### Database view
+
+![database](static/images/database.py.png)
 
 
