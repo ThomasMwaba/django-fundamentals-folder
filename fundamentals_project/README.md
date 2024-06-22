@@ -86,8 +86,9 @@ To create a Django app in a Django project
 #### Django QuerySet
 
 
-- A QuerySet is a collection of data from a database
-- It makes it easier to get the data you really need.
+* A QuerySet is a collection of data from a database
+
+*It makes it easier to get the data you really need.
 
 
 ##### Run  `python manage.py shell` On Cmd
