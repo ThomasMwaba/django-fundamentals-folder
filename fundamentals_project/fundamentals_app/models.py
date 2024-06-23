@@ -21,12 +21,10 @@ class Planet(models.Model):
     def save(self,*args,**kwargs):
         # allows to add some custom code before we save the planet
         
-        # if the slug field is empty
-        if not self.slug:
-            # Make a slug from the name and put it in the slug field
-            self.slug = slugify(self.name)
+        # Make a slug from the name and put it in the slug field
+        self.slug = slugify(self.name)
         
-            super().save(*args,**kwargs) 
+        super().save(*args,**kwargs) 
             # saves it             
     def __str__(self):
         
