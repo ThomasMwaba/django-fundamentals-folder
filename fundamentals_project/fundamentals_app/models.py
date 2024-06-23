@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.utils.text import slugify
+
 # Create your models here.
 
 
@@ -12,17 +14,20 @@ class Planet(models.Model):
     
     fact = models.CharField(max_length=100) # fact about the planet
     
+    slug = models.SlugField(unique=True,blank=True)
+    
     
     
     def save(self,*args,**kwargs):
         # allows to add some custom code before we save the planet
-            
+        
+        # if the slug field is empty
+        if not self.slug:
+            # Make a slug from the name and put it in the slug field
+            self.slug = slugify(self.name)
+        
             super().save(*args,**kwargs) 
-            # saves it
-       
-            print(f'{self.name} has been added')
-                        
-                    # shows the name of the planet added               
+            # saves it             
     def __str__(self):
         
         return self.name
