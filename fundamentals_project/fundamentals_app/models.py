@@ -2,6 +2,8 @@ from django.db import models
 
 from django.utils.text import slugify
 
+
+
 # Create your models here.
 
 
@@ -16,7 +18,9 @@ class Planet(models.Model):
     
     slug = models.SlugField(unique=True,blank=True)
     
-    
+    planets = models.Manager() # renaming the model manager 
+
+ 
     
     def save(self,*args,**kwargs):
         # allows to add some custom code before we save the planet
