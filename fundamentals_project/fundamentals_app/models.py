@@ -31,7 +31,6 @@ class Planet(models.Model):
         super().save(*args,**kwargs) 
             # saves it             
     def __str__(self):
-        
         return self.name
         # shows the Name of the Database
     

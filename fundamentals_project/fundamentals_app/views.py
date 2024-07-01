@@ -4,10 +4,13 @@ import time, asyncio
 
 from django.http import HttpResponse
 
+from django.http import Http404
+
 
 from fundamentals_app.models import Planet
 
-from asgiref.sync import sync_to_async
+from django.shortcuts import get_object_or_404
+
 
 
 # Create your views here.
@@ -35,46 +38,29 @@ def home(request):
     return render(request,'index.html',context=context) # This shows the homepage message
 
 
+def planetlistview(request,id):
     
-# @sync_to_async
-# def planet1():
+    try:
+        planet = Planet.planets.get(id=id)
+    except Planet.DoesNotExist:
+       raise Http404(f"Planet {id} does not exist")
     
-#     print('Getting planet one ...')
-    
-#     time.sleep(5)
-    
-#     planet1 = Planet.objects.get(id=1)
-    
-#     print(f'{planet1} has gotten')
+    context= {'planet':planet}
+        
+    return render(request,'planet-list.html',context=context)
 
 
+# from django.http import Http404
 
+# def planetlistview(request,id):
+    
+#     planet = get_object_or_404(Planet,id=id)
+    
+#     context = {'planet':planet}
+    
+#     return render(request,'planet-list.html',context=context)
+    
 
-# @sync_to_async
-# def planet2():
-    
-#     print('Getting planet two ...')
-    
-#     time.sleep(5)
-    
-#     planet2 = Planet.objects.get(id=2)
-    
-#     print(f'{planet2} has gotten')
-
-
-
-# async def planet_async(request):
-    
-#     print('Waiting to get planets')
-    
-#     planets = Planet.objects.all()
-    
-#     await asyncio.sleep(3)
-    
-#     print('Planets obtainted')
-
-    
-#     return HttpResponse(f'{planets} being displayed')
 
 
 
